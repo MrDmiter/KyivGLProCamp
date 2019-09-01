@@ -7,7 +7,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -26,9 +25,7 @@ public class FirstTest {
     public void setUp() {
 
         WebDriverManager.chromedriver().setup();
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("start-fullscreen");
-        driver = new ChromeDriver(options);
+        driver = new ChromeDriver();
         wait = new WebDriverWait(driver, 10);
 
     }
@@ -43,7 +40,7 @@ public class FirstTest {
         //Wait until login button is clickable
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button"))).click();
         //Wait until the slowest element on th page is uploaded
-        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//div[@id='copyright']"),"Copyright © 2012-2019"));
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//div[@id='copyright']"), "Copyright © 2012-2019"));
         //Find all the visible categories from left bar
         List<WebElement> categories = driver.findElements(By.xpath("//ul[@id='box-apps-menu']/li"));
         //Take each element and click on it
@@ -67,6 +64,7 @@ public class FirstTest {
             categories = driver.findElements(By.xpath("//ul[@id='box-apps-menu']/li"));
         }
     }
+
 
     /**
      * Actions after test
