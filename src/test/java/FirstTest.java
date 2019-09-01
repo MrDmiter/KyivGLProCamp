@@ -30,6 +30,7 @@ public class FirstTest {
         options.addArguments("start-fullscreen");
         driver = new ChromeDriver(options);
         wait = new WebDriverWait(driver, 10);
+
     }
 
     /**
